@@ -28,6 +28,8 @@
   /* --- lines --- */
   --line:        #293646;
   --line-soft:   #1B2634;
+  --gold-line:   rgba(201, 162, 39, .30);   /* frame borders */
+  --gold-wash:   rgba(201, 162, 39, .05);   /* faint gold fill */
 
   --paper:       #FFFFFF;
 
@@ -248,11 +250,23 @@ ul { list-style: none; }
 
 /* ---------- Sections ---------- */
 
-.section { padding-block: clamp(56px, 8vw, 92px); counter-increment: sec; }
-.section--tight { padding-block: clamp(44px, 6vw, 68px); }
-.section + .section { border-top: 1px solid var(--line-soft); }
+.section { padding-block: clamp(22px, 3vw, 34px); counter-increment: sec; }
+.section--tight { padding-block: clamp(20px, 2.5vw, 28px); }
 
-.section__head { margin-bottom: 36px; max-width: 70ch; }
+/* Every section is its own framed block, so a long page reads as a stack of
+   discrete units rather than one continuous column. The frame is a muted gold
+   so it marks the boundary without turning into a large gold surface. */
+.section > .wrap {
+  border: 1px solid var(--gold-line);
+  border-radius: var(--r-card);
+  background: linear-gradient(180deg, var(--gold-wash), transparent 150px);
+  padding: clamp(26px, 3.6vw, 42px) clamp(20px, 3vw, 36px);
+}
+
+/* The contact block is already a framed panel - don't box it twice. */
+#contact > .wrap { border: 0; background: none; padding-inline: var(--gutter); }
+
+.section__head { margin-bottom: 32px; max-width: 70ch; }
 .section__index {
   display: block;
   font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
@@ -353,6 +367,9 @@ ul { list-style: none; }
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-card);
+  /* Inset the framed sections so their borders do not sit flush against the
+     folder's own edge and read as a doubled line. */
+  padding-inline: 14px;
 }
 
 /* ---------- Project grid ---------- */
@@ -444,6 +461,17 @@ ul { list-style: none; }
   transition: border-color .2s var(--ease), background .2s var(--ease);
 }
 .minor__item:hover { border-color: var(--line); background: var(--surface-2); }
+
+/* The hackathon placement is an award, not just another row. */
+.minor__item--award {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, rgba(201, 162, 39, .07), transparent 70%), var(--bg-2);
+}
+.minor__item--award:hover { border-color: var(--gold-hover); }
+.minor__item--award .minor__name { color: var(--gold); }
+.minor__item--award .label { color: var(--gold); }
+.minor__award { width: 14px; height: 14px; vertical-align: -2px; margin-right: 5px; }
+
 .minor__name { font-weight: 600; font-size: .95rem; }
 .minor__desc { color: var(--text-dim); font-size: .89rem; }
 
