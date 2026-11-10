@@ -59,5 +59,16 @@
     apply(fromLocation(), false);
   });
 
+  // Flag the tab row while it is stuck to the top of the window, so it can
+  // restyle itself as the folder's rim instead of a band over the body.
+  var tabRow = document.querySelector(".folder__tabs");
+  var sentinel = document.querySelector(".folder__sentinel");
+
+  if (tabRow && sentinel && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      tabRow.classList.toggle("is-stuck", !entries[0].isIntersecting);
+    }).observe(sentinel);
+  }
+
   apply(fromLocation(), false);
 })();

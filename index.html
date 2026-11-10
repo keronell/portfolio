@@ -80,9 +80,18 @@
   </div>
 </header>
 
-<nav class="tracks" aria-label="Portfolio track">
-  <div class="wrap tracks__inner">
-    <span class="tracks__label" id="track-label">Viewing as</span>
+<main>
+
+<!-- The track tabs and everything they filter form one folder: the tabs are its
+     index tabs, .folder__body is the open folder they belong to. -->
+<div class="folder">
+
+  <!-- Watched by main.js: once this scrolls out of view the tab row is stuck,
+       and it restyles itself as the folder's top rim. -->
+  <div class="folder__sentinel" aria-hidden="true"></div>
+
+  <nav class="folder__tabs" aria-label="Portfolio track">
+    <span class="folder__label" id="track-label">Viewing as</span>
     <div class="tablist" role="group" aria-labelledby="track-label">
       <button class="tab" type="button" data-set-track="ml" aria-pressed="true">ML &amp; Computer Vision</button>
       <button class="tab" type="button" data-set-track="ai" aria-pressed="false">AI &amp; LLM Applications</button>
@@ -90,10 +99,9 @@
       <button class="tab" type="button" data-set-track="fullstack" aria-pressed="false">Full-Stack</button>
       <button class="tab" type="button" data-set-track="embedded" aria-pressed="false">Embedded</button>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<main>
+  <div class="folder__body">
 
 <!-- ============ PROJECTS ============ -->
 <section class="section" id="projects">
@@ -417,6 +425,9 @@
     </div>
   </div>
 </section>
+
+  </div><!-- /.folder__body -->
+</div><!-- /.folder -->
 
 <!-- ============ EDUCATION ============ -->
 <section class="section" id="education">

@@ -21,6 +21,13 @@
   --accent-ink: #042029;
   --paper:      #ffffff;
 
+  /* The folder sits above the page, and cards sit above the folder, so the
+     three read as desk -> open folder -> the documents inside it. */
+  --folder:      #101621;
+  --tab:         #0a0e15;
+  --surface-raised: #171f2d;
+  --line-raised:    #27344a;
+
   --radius:   14px;
   --radius-s: 9px;
   --maxw:     1080px;
@@ -160,41 +167,98 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn--primary:hover { background: #5ce2f7; border-color: #5ce2f7; }
 .btn svg { width: 16px; height: 16px; flex: none; }
 
-/* ---------- Track tabs ---------- */
+/* ---------- The folder ----------
 
-.tracks {
-  position: sticky; top: 0; z-index: 20;
-  background: rgba(11, 14, 19, .88);
-  backdrop-filter: blur(12px);
-  border-block: 1px solid var(--line-soft);
-  margin-top: 38px;
+   The track tabs are the folder's index tabs and .folder__body is the open
+   folder beneath them. The active tab merges into the body: the tab row keeps
+   a 1px bottom padding that its background does not paint (background-clip),
+   the body is pulled up by that 1px, and the active tab's bottom border — in
+   the body's own colour — covers the body's top border across its width. */
+
+.folder {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 30px auto 0;
 }
-.tracks__inner { display: flex; align-items: center; gap: 16px; padding-block: 10px; }
-.tracks__label {
+
+.folder__tabs {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  padding: 14px 18px 1px;
+  /* Opaque so page content cannot show through while the row is stuck, but
+     clipped to the content box so it never paints over the merge line. */
+  background: var(--bg);
+  background-clip: content-box;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.folder__tabs::-webkit-scrollbar { display: none; }
+
+.folder__sentinel { height: 1px; margin-bottom: -1px; }
+
+/* Stuck to the top of the window, the row can no longer sit on the body, so it
+   becomes the folder's top rim instead: folder-coloured, with its walls drawn
+   as insets (no border, so nothing shifts at the moment it sticks). */
+.folder__tabs.is-stuck {
+  background-color: var(--folder);
+  background-clip: border-box;
+  border-radius: 14px 14px 0 0;
+  box-shadow:
+    inset 1px 0 0 var(--line),
+    inset -1px 0 0 var(--line),
+    inset 0 1px 0 var(--line),
+    0 1px 0 var(--line),
+    0 14px 26px -18px rgba(0, 0, 0, .9);
+}
+
+.folder__label {
+  flex: none;
   font-family: var(--mono); font-size: 11px; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--muted); flex: none;
+  text-transform: uppercase; color: var(--muted);
+  padding-bottom: 11px;
 }
-.tablist { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
-.tablist::-webkit-scrollbar { display: none; }
+
+.tablist { display: flex; align-items: flex-end; gap: 4px; }
 
 .tab {
   flex: none;
   appearance: none;
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--text-dim);
-  font: inherit; font-size: .9rem; font-weight: 550;
-  padding: 8px 15px;
-  border-radius: 999px;
+  background: var(--tab);
+  border: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line);
+  border-radius: 12px 12px 0 0;
+  margin-bottom: -1px;
+  color: var(--muted);
+  font: inherit; font-size: .88rem; font-weight: 550;
+  padding: 9px 17px 10px;
   cursor: pointer;
   white-space: nowrap;
-  transition: color .16s, background .16s, border-color .16s;
+  transition: background .16s, color .16s, padding .16s;
 }
-.tab:hover { color: var(--text); background: var(--surface-2); }
+.tab:hover { color: var(--text-dim); background: #0e1621; }
+
 .tab[aria-pressed="true"] {
   color: var(--accent);
-  background: rgba(56, 214, 240, .10);
-  border-color: rgba(56, 214, 240, .34);
+  background: var(--folder);
+  border-color: var(--line);
+  border-bottom-color: var(--folder);
+  box-shadow: inset 0 2px 0 var(--accent);
+  /* The open tab stands a little taller, as a pulled-out folder tab would. */
+  padding-top: 13px;
+}
+
+.folder__body {
+  position: relative;
+  margin-top: -1px;
+  background: var(--folder);
+  border: 1px solid var(--line);
+  border-radius: 14px;
 }
 
 /* ---------- Sections ---------- */
@@ -220,18 +284,18 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .card {
   display: flex; flex-direction: column;
-  background: var(--surface);
-  border: 1px solid var(--line);
+  background: var(--surface-raised);
+  border: 1px solid var(--line-raised);
   border-radius: var(--radius);
   overflow: hidden;
   transition: border-color .2s, transform .2s;
 }
-.card:hover { border-color: #2b3d52; transform: translateY(-2px); }
+.card:hover { border-color: #384963; transform: translateY(-2px); }
 
 .card__media {
   aspect-ratio: 16 / 9;
   background: var(--surface-2);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--line-raised);
   display: grid; place-items: center;
   overflow: hidden;
 }
@@ -378,12 +442,20 @@ html[data-track="embedded"]  [data-tracks]:not([data-tracks~="embedded"]) {
 
 /* ---------- Responsive ---------- */
 
+/* Keep the folder off the viewport edges once the page is narrower than it. */
+@media (max-width: 1124px) {
+  .folder { width: auto; margin-inline: 14px; }
+}
+
 @media (max-width: 760px) {
+  .folder { margin-inline: 10px; }
+  .folder__tabs { gap: 10px; padding-inline: 10px; }
+  .tab { padding-inline: 13px; font-size: .84rem; }
   .entry { grid-template-columns: 1fr; gap: 4px; }
   .entry__when { padding-top: 0; }
   .skillrow { grid-template-columns: 1fr; gap: 9px; }
   .skillrow__label { padding-top: 0; }
-  .tracks__label { display: none; }
+  .folder__label { display: none; }
   .grid { grid-template-columns: 1fr; }
 }
 
@@ -393,6 +465,6 @@ html[data-track="embedded"]  [data-tracks]:not([data-tracks~="embedded"]) {
 }
 
 @media print {
-  body::before, .starfield, .tracks, .actions { display: none; }
+  body::before, .starfield, .folder__tabs, .actions { display: none; }
   body { background: #fff; color: #000; }
 }
