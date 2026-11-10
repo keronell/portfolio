@@ -1,6 +1,6 @@
 # portfolio
 
-Personal portfolio for Vladislav Pavlyuk — project previews across ML, computer vision, AI applications, backend, full-stack, and embedded software.
+Personal portfolio for Vladislav Pavlyuk - project previews across ML, computer vision, AI applications, backend, full-stack, and embedded software.
 
 **Live:** https://keronell.github.io/portfolio/
 
