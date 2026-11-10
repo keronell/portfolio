@@ -17,14 +17,14 @@
   var ctx = canvas.getContext("2d");
   if (!ctx) return;
 
-  var WHITE = "233, 241, 252";
-  var GOLD = "255, 203, 112";
+  var WHITE = "241, 243, 245";
+  var GOLD = "201, 162, 39";
 
   // size in CSS px, drift in px per second, alpha range, share of the field
   var LAYERS = [
-    { size: 1, speed: 0.55, min: 0.26, max: 0.55, share: 0.60 },
-    { size: 2, speed: 1.15, min: 0.45, max: 0.80, share: 0.30 },
-    { size: 3, speed: 2.05, min: 0.70, max: 1.00, share: 0.10 }
+    { size: 1, speed: 0.50, min: 0.22, max: 0.46, share: 0.64 },
+    { size: 2, speed: 1.05, min: 0.38, max: 0.68, share: 0.28 },
+    { size: 3, speed: 1.90, min: 0.58, max: 0.88, share: 0.08 }
   ];
 
   // Drift direction: slightly right of straight up.
@@ -57,7 +57,7 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.imageSmoothingEnabled = false;
 
-    var count = Math.max(60, Math.min(320, Math.round((width * height) / 7200)));
+    var count = Math.max(55, Math.min(260, Math.round((width * height) / 9000)));
     stars = [];
 
     for (var i = 0; i < count; i++) {
@@ -70,7 +70,7 @@
         vy: DRIFT_Y * layer.speed * rand(0.7, 1.3),
         alpha: rand(layer.min, layer.max),
         // A minority of stars are gold, and they skew towards the brighter layers.
-        colour: Math.random() < (layer.size === 1 ? 0.30 : 0.45) ? GOLD : WHITE,
+        colour: Math.random() < (layer.size === 1 ? 0.34 : 0.50) ? GOLD : WHITE,
         // The nearest stars get a dim square halo so they read as genuinely bright.
         halo: layer.size === 3,
         // Twinkle is deliberately shallow and slow - texture, not strobing.

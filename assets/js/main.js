@@ -1,8 +1,9 @@
-/* Track switching.
-   All five tracks are present in the DOM; CSS hides the ones that do not
-   match <html data-track="...">. This script only flips that attribute,
-   keeps the buttons in sync and mirrors the choice into the URL so a
-   track-specific link can be copied straight out of the address bar. */
+/* Domain switching, scroll reveals and nav state.
+
+   All five domains are present in the DOM; CSS hides the ones that do not
+   match <html data-track="...">. This script only flips that attribute, keeps
+   the buttons in sync, and mirrors the choice into the URL so a domain-specific
+   link can be copied straight out of the address bar. */
 
 (function () {
   "use strict";
@@ -20,6 +21,16 @@
     return normalise(params.get("track")) || normalise(location.hash.replace("#", "")) || "ml";
   }
 
+  /* Elements hidden by the domain filter are never observed by the reveal
+     observer, so anything newly shown is revealed immediately instead of
+     appearing at zero opacity. */
+  function revealVisible() {
+    var hidden = document.querySelectorAll("[data-reveal]:not(.is-visible)");
+    for (var i = 0; i < hidden.length; i++) {
+      if (hidden[i].getClientRects().length) hidden[i].classList.add("is-visible");
+    }
+  }
+
   function apply(track, pushUrl) {
     root.setAttribute("data-track", track);
 
@@ -32,6 +43,7 @@
       url.searchParams.set("track", track);
       url.hash = "";
       history.pushState({ track: track }, "", url);
+      revealVisible();
     }
   }
 
@@ -41,34 +53,93 @@
     });
   });
 
-  // Left/right arrows move between tracks once a button has focus.
-  document.querySelector(".tablist").addEventListener("keydown", function (event) {
-    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+  // Left/right arrows move between domains once a tab has focus.
+  var tablist = document.querySelector(".tablist");
+  if (tablist) {
+    tablist.addEventListener("keydown", function (event) {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
 
-    var index = buttons.indexOf(document.activeElement);
-    if (index === -1) return;
+      var index = buttons.indexOf(document.activeElement);
+      if (index === -1) return;
 
-    event.preventDefault();
-    var step = event.key === "ArrowRight" ? 1 : -1;
-    var next = buttons[(index + step + buttons.length) % buttons.length];
-    next.focus();
-    apply(next.dataset.setTrack, true);
-  });
+      event.preventDefault();
+      var step = event.key === "ArrowRight" ? 1 : -1;
+      var next = buttons[(index + step + buttons.length) % buttons.length];
+      next.focus();
+      apply(next.dataset.setTrack, true);
+    });
+  }
 
   window.addEventListener("popstate", function () {
     apply(fromLocation(), false);
+    revealVisible();
   });
 
-  // Flag the tab row while it is stuck to the top of the window, so it can
-  // restyle itself as the folder's rim instead of a band over the body.
-  var tabRow = document.querySelector(".folder__tabs");
-  var sentinel = document.querySelector(".folder__sentinel");
+  apply(fromLocation(), false);
 
-  if (tabRow && sentinel && "IntersectionObserver" in window) {
-    new IntersectionObserver(function (entries) {
-      tabRow.classList.toggle("is-stuck", !entries[0].isIntersecting);
-    }).observe(sentinel);
+  /* ---- reveal on scroll ---- */
+
+  var reveals = document.querySelectorAll("[data-reveal]");
+
+  if (!("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    for (var i = 0; i < reveals.length; i++) reveals[i].classList.add("is-visible");
+  } else {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.06 });
+
+    for (var j = 0; j < reveals.length; j++) revealObserver.observe(reveals[j]);
   }
 
-  apply(fromLocation(), false);
+  /* ---- tab rail: flag while stuck under the nav ---- */
+
+  var tabRail = document.querySelector(".folder__tabs");
+  var sentinel = document.querySelector(".folder__sentinel");
+
+  if (tabRail && sentinel && "IntersectionObserver" in window) {
+    var navHeight = Math.round(
+      parseFloat(getComputedStyle(root).getPropertyValue("--nav-h")) || 58
+    );
+
+    new IntersectionObserver(function (entries) {
+      tabRail.classList.toggle("is-stuck", !entries[0].isIntersecting);
+    }, { rootMargin: "-" + navHeight + "px 0px 0px 0px" }).observe(sentinel);
+  }
+
+  /* ---- nav: mark the section currently in view ---- */
+
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav__link"));
+  var targets = navLinks
+    .map(function (link) { return document.querySelector(link.getAttribute("href")); })
+    .filter(Boolean);
+
+  if (targets.length && "IntersectionObserver" in window) {
+    var ratios = {};
+
+    var navObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        ratios[entry.target.id] = entry.isIntersecting ? entry.intersectionRatio : 0;
+      });
+
+      var bestId = null, bestRatio = 0;
+      targets.forEach(function (section) {
+        var ratio = ratios[section.id] || 0;
+        if (ratio > bestRatio) { bestRatio = ratio; bestId = section.id; }
+      });
+
+      navLinks.forEach(function (link) {
+        link.classList.toggle(
+          "is-current",
+          bestId !== null && link.getAttribute("href") === "#" + bestId
+        );
+      });
+    }, { threshold: [0, 0.15, 0.35, 0.6, 1] });
+
+    targets.forEach(function (section) { navObserver.observe(section); });
+  }
 })();
