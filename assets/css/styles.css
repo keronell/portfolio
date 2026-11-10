@@ -289,26 +289,31 @@ ul { list-style: none; }
 .fact__v em { font-style: normal; color: var(--gold); }
 
 /* ---------- The folder ----------
-   The domain tabs are the folder's index tabs; .folder__body is the open
-   folder holding everything they filter. The open tab merges into the body:
-   the rail keeps a 1px bottom padding its background does not paint, the body
-   is pulled up by that 1px, and the open tab's bottom border - in the body's
-   own colour - covers the body's top border across its width. */
+
+   Base layout (narrow screens): the domain tabs are a horizontal strip sitting
+   on top of .folder__body, the open folder they filter. The open tab merges
+   into the body - the strip keeps a 1px bottom padding its background does not
+   paint, the body is pulled up by that 1px, and the open tab's bottom border,
+   in the body's own colour, covers the body's top border.
+
+   On wide screens the strip becomes a fixed rail down the left margin so the
+   domain can be changed from anywhere on the page - see the min-width rule in
+   the responsive section. */
 
 .folder {
-  position: relative; z-index: 1;
-  width: 100%; max-width: var(--maxw);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--maxw);
   margin: 0 auto;
 }
 
-.folder__sentinel { height: 1px; margin-bottom: -1px; }
-
 .folder__tabs {
-  position: sticky;
-  top: var(--nav-h);
-  z-index: 20;
-  display: flex; align-items: flex-end; gap: 16px;
-  padding: 16px var(--gutter) 1px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 0 12px 1px;
+  margin-bottom: -1px;
   background: var(--bg);
   background-clip: content-box;
   overflow-x: auto;
@@ -316,7 +321,7 @@ ul { list-style: none; }
 }
 .folder__tabs::-webkit-scrollbar { display: none; }
 
-.folder__label { flex: none; padding-bottom: 11px; }
+.folder__label { display: none; }
 
 .tablist { display: flex; align-items: flex-end; gap: 3px; }
 
@@ -332,8 +337,11 @@ ul { list-style: none; }
   color: var(--text-dim);
   font: inherit; font-size: .85rem; font-weight: 550;
   white-space: nowrap;
+  text-align: left;
   cursor: pointer;
-  transition: background .16s var(--ease), color .16s var(--ease);
+  transition: background .18s var(--ease), color .18s var(--ease),
+              border-color .18s var(--ease), box-shadow .18s var(--ease),
+              margin .18s var(--ease), padding .18s var(--ease);
 }
 .tab:hover { color: var(--text); background: var(--surface-2); }
 
@@ -346,30 +354,13 @@ ul { list-style: none; }
   padding-top: 12px;
 }
 
-/* Stuck under the nav the rail can no longer sit on the body, so it becomes
-   the folder's top rim: walls drawn as insets, so nothing shifts. */
-.folder__tabs.is-stuck {
-  background-color: var(--surface);
-  background-clip: border-box;
-  border-radius: var(--r-card) var(--r-card) 0 0;
-  box-shadow:
-    inset  1px 0 0 var(--line),
-    inset -1px 0 0 var(--line),
-    inset  0 1px 0 var(--line),
-    0 1px 0 var(--line),
-    0 16px 28px -20px rgba(0, 0, 0, .95);
-}
-.folder__tabs.is-stuck .tab:not([aria-pressed="true"]) { background: var(--bg-2); }
-
 .folder__body {
   position: relative;
-  margin-top: -1px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-card);
-  /* Inset the framed sections so their borders do not sit flush against the
-     folder's own edge and read as a doubled line. */
   padding-inline: 14px;
+  min-width: 0;
 }
 
 /* ---------- Project grid ---------- */
@@ -554,8 +545,74 @@ html[data-track="embedded"]  [data-tracks]:not([data-tracks~="embedded"]) {
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   .folder { width: auto; margin-inline: 14px; }
+}
+
+/* Wide screens: the tabs leave the folder and become a fixed rail in the left
+   margin, so the domain can be switched from anywhere on the page. The page is
+   padded by exactly the rail width, so the rail never covers content. */
+@media (min-width: 1024px) {
+  :root { --rail-w: 196px; }
+
+  body { padding-left: var(--rail-w); }
+
+  .folder__tabs {
+    position: fixed;
+    top: calc(var(--nav-h) + 44px);
+    left: 0;
+    z-index: 30;
+    width: var(--rail-w);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 0 20px;
+    margin-bottom: 0;
+    background: none;
+    overflow: visible;
+  }
+
+  .folder__label { display: block; padding-left: 2px; }
+
+  .tablist { flex-direction: column; align-items: stretch; gap: 7px; }
+
+  /* Every domain is the same block; only the open one differs. */
+  .tab {
+    display: flex;
+    align-items: center;
+    /* No explicit width: align-items:stretch sizes these, which is what lets
+       the open tab's negative margins actually widen it rather than just
+       shifting it. */
+    /* Fixed height, not min-height: the longest label wraps to two lines and
+       would otherwise make its block taller than the rest. */
+    height: 64px;
+    margin: 0;
+    padding: 8px 14px;
+    line-height: 1.3;
+    white-space: normal;
+    border: 1px solid var(--line);
+    border-radius: var(--r-ctrl);
+    background: var(--bg-2);
+    box-shadow: none;
+  }
+  .tab:hover { background: var(--surface-2); border-color: #35465c; }
+
+  /* The open domain is the file pulled out of the drawer: it slides out to the
+     right past the rail, stands taller than the rest and casts a shadow. */
+  .tab[aria-pressed="true"] {
+    margin-right: -20px;
+    margin-left: -6px;
+    height: 76px;
+    padding: 8px 16px;
+    font-size: .92rem;
+    background: var(--surface);
+    border-color: var(--gold);
+    border-radius: var(--r-ctrl);
+    color: var(--gold);
+    box-shadow:
+      inset 3px 0 0 var(--gold),
+      10px 10px 26px -14px rgba(0, 0, 0, .95);
+  }
 }
 
 @media (max-width: 900px) {

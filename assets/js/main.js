@@ -53,17 +53,20 @@
     });
   });
 
-  // Left/right arrows move between domains once a tab has focus.
+  /* Arrow keys move between domains once a tab has focus. The rail is vertical
+     on wide screens and horizontal on narrow ones, so both axes are accepted. */
+  var NEXT_KEYS = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
   var tablist = document.querySelector(".tablist");
+
   if (tablist) {
     tablist.addEventListener("keydown", function (event) {
-      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      var step = NEXT_KEYS[event.key];
+      if (!step) return;
 
       var index = buttons.indexOf(document.activeElement);
       if (index === -1) return;
 
       event.preventDefault();
-      var step = event.key === "ArrowRight" ? 1 : -1;
       var next = buttons[(index + step + buttons.length) % buttons.length];
       next.focus();
       apply(next.dataset.setTrack, true);
@@ -94,21 +97,6 @@
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.06 });
 
     for (var j = 0; j < reveals.length; j++) revealObserver.observe(reveals[j]);
-  }
-
-  /* ---- tab rail: flag while stuck under the nav ---- */
-
-  var tabRail = document.querySelector(".folder__tabs");
-  var sentinel = document.querySelector(".folder__sentinel");
-
-  if (tabRail && sentinel && "IntersectionObserver" in window) {
-    var navHeight = Math.round(
-      parseFloat(getComputedStyle(root).getPropertyValue("--nav-h")) || 58
-    );
-
-    new IntersectionObserver(function (entries) {
-      tabRail.classList.toggle("is-stuck", !entries[0].isIntersecting);
-    }, { rootMargin: "-" + navHeight + "px 0px 0px 0px" }).observe(sentinel);
   }
 
   /* ---- nav: mark the section currently in view ---- */

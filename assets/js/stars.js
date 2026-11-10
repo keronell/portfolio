@@ -47,8 +47,12 @@
 
   function build() {
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth;
-    height = window.innerHeight;
+    /* clientWidth, not innerWidth: innerWidth includes the scrollbar, so the
+       canvas would be set wider than the layout viewport and introduce its own
+       horizontal scroll. */
+    var doc = document.documentElement;
+    width = doc.clientWidth || window.innerWidth;
+    height = doc.clientHeight || window.innerHeight;
 
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
