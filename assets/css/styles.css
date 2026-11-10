@@ -44,6 +44,15 @@ body {
   counter-reset: sec;
 }
 
+/* Drifting starfield, painted by assets/js/stars.js. Sits behind all content
+   (.wrap is z-index 1) and never takes pointer events. */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
 /* Ambient glow behind the hero, purely decorative. */
 body::before {
   content: "";
@@ -182,7 +191,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   transition: color .16s, background .16s, border-color .16s;
 }
 .tab:hover { color: var(--text); background: var(--surface-2); }
-.tab[aria-selected="true"] {
+.tab[aria-pressed="true"] {
   color: var(--accent);
   background: rgba(56, 214, 240, .10);
   border-color: rgba(56, 214, 240, .34);
@@ -384,6 +393,6 @@ html[data-track="embedded"]  [data-tracks]:not([data-tracks~="embedded"]) {
 }
 
 @media print {
-  body::before, .tracks, .actions { display: none; }
+  body::before, .starfield, .tracks, .actions { display: none; }
   body { background: #fff; color: #000; }
 }
