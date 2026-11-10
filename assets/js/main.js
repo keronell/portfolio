@@ -99,6 +99,123 @@
     for (var j = 0; j < reveals.length; j++) revealObserver.observe(reveals[j]);
   }
 
+  /* ---- lightbox: enlarge a card figure on click ---- */
+
+  (function () {
+    var figures = Array.prototype.slice.call(document.querySelectorAll(".card__media img"));
+    if (!figures.length) return;
+
+    var box, image, caption, opener = null;
+
+    function build() {
+      box = document.createElement("div");
+      box.className = "lightbox";
+      box.hidden = true;
+      box.setAttribute("role", "dialog");
+      box.setAttribute("aria-modal", "true");
+      box.setAttribute("aria-label", "Enlarged figure");
+      box.innerHTML =
+        '<button type="button" class="lightbox__close" aria-label="Close">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+          '<path d="M5 5l14 14M19 5L5 19"/></svg>' +
+        "</button>" +
+        '<figure class="lightbox__fig">' +
+          '<span class="lightbox__frame"><img class="lightbox__img" alt=""></span>' +
+          '<figcaption class="lightbox__cap"></figcaption>' +
+        "</figure>" +
+        '<span class="lightbox__hint label">Esc or click outside to close</span>';
+
+      document.body.appendChild(box);
+      image = box.querySelector(".lightbox__img");
+      caption = box.querySelector(".lightbox__cap");
+
+      box.addEventListener("click", function (event) {
+        // Only the backdrop and the close button dismiss; the figure itself does not.
+        if (event.target === box || box.querySelector(".lightbox__close").contains(event.target)) close();
+      });
+      document.addEventListener("keydown", function (event) {
+        if (box.hidden) return;
+        if (event.key === "Escape") { close(); return; }
+        if (event.key === "Tab") { event.preventDefault(); box.querySelector(".lightbox__close").focus(); }
+      });
+    }
+
+    function lockScroll(on) {
+      var root = document.documentElement;
+      if (on) {
+        // Compensate for the scrollbar so hiding it does not shift the page.
+        var gap = window.innerWidth - root.clientWidth;
+        root.style.overflow = "hidden";
+        if (gap > 0) root.style.paddingRight = gap + "px";
+      } else {
+        root.style.overflow = "";
+        root.style.paddingRight = "";
+      }
+    }
+
+    function open(img) {
+      if (!box) build();
+      opener = img.closest(".card__media") || img;
+
+      image.src = img.currentSrc || img.src;
+      image.alt = img.alt || "";
+      caption.textContent = img.alt || "";
+      // Carry the figure inversion across, so the enlarged view matches the card.
+      image.classList.toggle(
+        "lightbox__img--figure",
+        !!img.closest(".card__media--figure")
+      );
+
+      box.hidden = false;
+      lockScroll(true);
+      box.querySelector(".lightbox__close").focus();
+    }
+
+    function close() {
+      if (!box || box.hidden) return;
+      box.hidden = true;
+      lockScroll(false);
+      image.removeAttribute("src");
+      if (opener && opener.focus) opener.focus();
+      opener = null;
+    }
+
+    figures.forEach(function (img) {
+      var media = img.parentElement;
+      media.classList.add("is-zoomable");
+      media.setAttribute("role", "button");
+      media.setAttribute("tabindex", "0");
+      media.setAttribute("aria-label", "Enlarge figure: " + (img.alt || "project figure"));
+
+      media.addEventListener("click", function () { open(img); });
+      media.addEventListener("keydown", function (event) {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        open(img);
+      });
+    });
+
+    /* Figure links that point straight at an image open here too, rather than
+       dumping the raw file in a new tab. */
+    Array.prototype.forEach.call(
+      document.querySelectorAll('.card__note a[href$=".webp"], .card__note a[href$=".png"], .card__note a[href$=".jpg"]'),
+      function (link) {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          if (!box) build();
+          opener = link;
+          image.src = link.getAttribute("href");
+          image.alt = link.textContent.trim();
+          caption.textContent = link.textContent.trim();
+          image.classList.add("lightbox__img--figure");
+          box.hidden = false;
+          lockScroll(true);
+          box.querySelector(".lightbox__close").focus();
+        });
+      }
+    );
+  })();
+
   /* ---- nav: mark the section currently in view ---- */
 
   var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav__link"));
