@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" data-track="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vladislav Pavlyuk — Software Engineer</title>
+<meta name="description" content="Portfolio of Vladislav (Vlad) Pavlyuk — junior software engineer. Machine learning and computer vision, LLM applications, backend services, full-stack web and embedded projects.">
+<meta name="author" content="Vladislav Pavlyuk">
+<link rel="canonical" href="https://keronell.github.io/portfolio/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vladislav Pavlyuk — Software Engineer">
+<meta property="og:description" content="Machine learning and computer vision, LLM applications, backend, full-stack and embedded projects.">
+<meta property="og:url" content="https://keronell.github.io/portfolio/">
+<meta property="og:image" content="https://keronell.github.io/portfolio/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%230b0e13'/%3E%3Ctext%20x='32'%20y='44'%20font-family='monospace'%20font-size='30'%20font-weight='700'%20fill='%2338d6f0'%20text-anchor='middle'%3EVP%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<!-- Resolve the track before first paint so a shared ?track= link never flashes the default. -->
+<script>
+(function () {
+  var valid = ["ml", "ai", "backend", "fullstack", "embedded"];
+  var q = new URLSearchParams(location.search).get("track");
+  var h = location.hash.replace("#", "");
+  var t = valid.indexOf(q) > -1 ? q : (valid.indexOf(h) > -1 ? h : "ml");
+  document.documentElement.setAttribute("data-track", t);
+})();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#projects">Skip to projects</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="hero__eyebrow">Open to junior engineering roles</p>
+    <h1 class="hero__name">Vladislav (Vlad) Pavlyuk</h1>
+
+    <p class="hero__role">
+      <span data-tracks="ml">Junior ML &amp; Computer Vision Engineer</span>
+      <span data-tracks="ai">Junior AI Engineer — LLM Applications</span>
+      <span data-tracks="backend">Junior Software Engineer — Backend Development</span>
+      <span data-tracks="fullstack">Junior Full-Stack Developer</span>
+      <span data-tracks="embedded">Junior Embedded Software Engineer</span>
+    </p>
+
+    <p class="hero__summary" data-tracks="ml">Software Engineer specializing in machine learning and computer vision, with hands-on experience training, evaluating and integrating deep learning models. Built object detection and neural recommendation pipelines, including automated annotation, dataset preparation and inference integration.</p>
+    <p class="hero__summary" data-tracks="ai">Software Engineer specializing in AI-powered applications, with hands-on experience building LLM classification workflows, semantic search and recommendation systems. Developed schema-validated outputs, confidence-based routing and human-in-the-loop escalation, integrating AI capabilities into applications using Python and FastAPI.</p>
+    <p class="hero__summary" data-tracks="backend">Software Engineer with hands-on experience building Python backend services, REST APIs and database-backed applications. Developed a career recommendation platform using FastAPI, microservices and event-driven communication. Experienced in integrating ML capabilities and testing application workflows.</p>
+    <p class="hero__summary" data-tracks="fullstack">Software Engineer with hands-on experience building web applications using React, Next.js, Python and FastAPI. Developed interactive interfaces, backend APIs and database integrations for career guidance and travel planning platforms. Experienced in integrating authentication, external APIs and AI-powered features.</p>
+    <p class="hero__summary" data-tracks="embedded">Software Engineer with hands-on experience in C programming, STM32 development and peripheral integration, complemented by a mechanical engineering diploma and Navy technical experience. Developed embedded functionality using interrupts, timers, ADC and UART, with practical experience maintaining and troubleshooting mechanical systems.</p>
+
+    <div class="hero__meta">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Petah Tikva, Israel
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 10 12 4 2 10l10 6 10-6Z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg>
+        B.Sc. Software Engineering — Afeka College
+      </span>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn--primary" href="mailto:thevlamax@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        thevlamax@gmail.com
+      </a>
+      <a class="btn" href="https://www.linkedin.com/in/vlad-pav/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95 4.02 0 4.76 2.5 4.76 5.76V21h-4v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.2 1.46-2.2 2.96V21h-4V9Z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn" href="https://github.com/keronell" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</header>
+
+<nav class="tracks" aria-label="Portfolio track">
+  <div class="wrap tracks__inner">
+    <span class="tracks__label" id="track-label">Viewing as</span>
+    <div class="tablist" role="group" aria-labelledby="track-label">
+      <button class="tab" type="button" data-set-track="ml" aria-pressed="true">ML &amp; Computer Vision</button>
+      <button class="tab" type="button" data-set-track="ai" aria-pressed="false">AI &amp; LLM Applications</button>
+      <button class="tab" type="button" data-set-track="backend" aria-pressed="false">Backend</button>
+      <button class="tab" type="button" data-set-track="fullstack" aria-pressed="false">Full-Stack</button>
+      <button class="tab" type="button" data-set-track="embedded" aria-pressed="false">Embedded</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section__head">
+      <h2 class="section__title">Selected projects</h2>
+      <p class="section__sub" data-tracks="ml">Computer vision and applied ML — training, evaluating and integrating models.</p>
+      <p class="section__sub" data-tracks="ai">LLM workflows, semantic retrieval and AI features shipped inside real applications.</p>
+      <p class="section__sub" data-tracks="backend">Python services, REST APIs, microservices and event-driven workflows.</p>
+      <p class="section__sub" data-tracks="fullstack">React and Next.js interfaces wired to Python and Node back ends.</p>
+      <p class="section__sub" data-tracks="embedded">C, STM32 and systems-level work, with the services that surround it.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- Object detection -->
+      <article class="card" data-tracks="ml ai">
+        <div class="card__media">
+          <svg viewBox="0 0 640 360" role="img" aria-label="Illustration of object detection bounding boxes with class labels">
+            <defs>
+              <pattern id="od-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M40 0H0v40" fill="none" stroke="#18222e" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="640" height="360" fill="#0d131c"/>
+            <rect width="640" height="360" fill="url(#od-grid)"/>
+            <rect x="78" y="70" width="150" height="220" fill="#38d6f0" fill-opacity=".07" stroke="#38d6f0" stroke-width="2" stroke-dasharray="7 5" rx="3"/>
+            <rect x="74" y="48" width="104" height="22" fill="#38d6f0" rx="3"/>
+            <text x="82" y="64" font-family="monospace" font-size="13" fill="#042029">person 0.94</text>
+            <rect x="300" y="168" width="196" height="124" fill="#5e8eff" fill-opacity=".07" stroke="#5e8eff" stroke-width="2" stroke-dasharray="7 5" rx="3"/>
+            <rect x="296" y="146" width="76" height="22" fill="#5e8eff" rx="3"/>
+            <text x="304" y="162" font-family="monospace" font-size="13" fill="#041024">dog 0.88</text>
+            <rect x="508" y="206" width="86" height="86" fill="#38d6f0" fill-opacity=".05" stroke="#2a8fa3" stroke-width="2" stroke-dasharray="5 5" rx="3"/>
+            <rect x="504" y="184" width="72" height="22" fill="#1a93a8" rx="3"/>
+            <text x="512" y="200" font-family="monospace" font-size="13" fill="#04212a">cat 0.61</text>
+            <text x="78" y="330" font-family="monospace" font-size="13" fill="#5f708a">mAP@0.5 · mAP@0.5:0.95 · per class</text>
+          </svg>
+        </div>
+        <div class="card__body">
+          <p class="card__kicker">Computer Vision · 2025</p>
+          <h3 class="card__title">Florence-2 → YOLOv8 Object Detection Pipeline</h3>
+          <ul class="card__list">
+            <li>Built an automated annotation pipeline using <strong>Florence-2</strong> zero-shot detection to label Flickr30k images, filtering low-confidence detections into a clean COCO dataset.</li>
+            <li>Converted COCO to YOLO format and trained <strong>YOLOv8</strong> detectors for <strong>person</strong> and <strong>pet</strong> classes (dog, cat, horse).</li>
+            <li>Compared a no-augmentation baseline against full augmentation (mosaic, mixup, random erasing), evaluating <strong>mAP@0.5</strong> and <strong>mAP@0.5:0.95</strong> per class with confusion matrices and PR curves.</li>
+            <li>Added a CLAHE, sharpening and gamma-correction preprocessing stage for inference, producing annotated outputs and batch statistics.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">Florence-2</span><span class="chip">YOLOv8</span><span class="chip">OpenCV</span><span class="chip">COCO</span>
+          </div>
+          <a class="card__link" href="https://github.com/keronell/Computer-Vision-Object-detection-project" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            View repository
+          </a>
+        </div>
+      </article>
+
+      <!-- Plant disease -->
+      <article class="card" data-tracks="ml">
+        <div class="card__media card__media--paper">
+          <img src="assets/img/plant-confusion.webp" width="1280" height="518" decoding="async" alt="Two confusion matrices side by side comparing a baseline augmentation model against a field-style augmentation model on the field dataset.">
+        </div>
+        <div class="card__body">
+          <p class="card__kicker">Machine Learning Research · 2025</p>
+          <h3 class="card__title">Plant Leaf Disease Detection — Lab-to-Field Generalization</h3>
+          <ul class="card__list">
+            <li>Studied <strong>domain shift</strong> between controlled laboratory imagery (PlantVillage, 61k images, 39 classes) and real-world field imagery (PlantDoc, FieldPlant).</li>
+            <li>Evaluated <strong>EfficientNet-B0</strong> and <strong>Vision Transformer</strong> backbones, measuring generalization with <strong>macro-F1</strong> across all three datasets.</li>
+            <li>Implemented supervised domain adaptation (quick-wins and progressive fine-tuning) and <strong>teacher–student pseudo-labeling</strong> for the unlabeled field case.</li>
+            <li>Ran a confidence-threshold ablation (T = 0.85 / 0.90 / 0.95) to quantify the precision–coverage trade-off of pseudo-labels.</li>
+          </ul>
+          <p class="card__note">Fig. baseline vs field-style augmentation, field dataset</p>
+          <div class="chips">
+            <span class="chip">PyTorch</span><span class="chip">torchvision</span><span class="chip">timm</span><span class="chip">scikit-learn</span><span class="chip">EfficientNet</span><span class="chip">ViT</span>
+          </div>
+          <a class="card__link" href="https://github.com/keronell/PLANT_LEAF_DISEASE_DETECTION" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            View repository
+          </a>
+        </div>
+      </article>
+
+      <!-- NextStep -->
+      <article class="card" data-tracks="ml ai backend fullstack embedded">
+        <div class="card__media card__media--paper">
+          <img src="assets/img/nextstep-architecture.webp" width="1280" height="724" decoding="async" alt="NextStep runtime architecture: a React single-page app passes through an nginx gateway to five Dapr-connected services, backed by Supabase, ChromaDB and Redis, with an offline job-ad pipeline.">
+        </div>
+        <div class="card__body">
+          <p class="card__kicker">Final Project · 2025–2026</p>
+          <h3 class="card__title">The Next Step — Career Matcher</h3>
+          <ul class="card__list">
+            <li>Career-discovery platform: an adaptive questionnaire matches users to one of <strong>16 tech careers</strong> with explainable, job-market-backed recommendations and a personal learning roadmap.</li>
+            <li>Built a <strong>PyTorch</strong> scoring ensemble over questionnaire, semantic-similarity and skill-overlap features; <strong>Sentence Transformers + ChromaDB</strong> embed and retrieve real job ads per career field.</li>
+            <li>Five <strong>FastAPI</strong> services behind an nginx gateway, connected with <strong>Dapr</strong> service invocation and pub/sub, Redis state and Supabase auth.</li>
+            <li><strong>React / Next.js</strong> front end for the quiz, ranked matches and an interactive skill-graph roadmap where every node carries how often real job ads demand it.</li>
+          </ul>
+          <p class="card__note">Fig. runtime architecture</p>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">ChromaDB</span><span class="chip">Redis</span><span class="chip">Dapr</span><span class="chip">Supabase</span>
+          </div>
+          <a class="card__link" href="https://github.com/keronell/Next_step_FP" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            View repository
+          </a>
+        </div>
+      </article>
+
+      <!-- ApprovalFlow -->
+      <article class="card" data-tracks="ai backend fullstack">
+        <div class="card__media">
+          <img src="assets/img/approvalflow-dashboard.webp" width="600" height="412" decoding="async" alt="ApprovalFlow dashboard showing counts for submitted, auto-approved, escalated and human-approved invoices alongside payment totals.">
+        </div>
+        <div class="card__body">
+          <p class="card__kicker">Microservices &amp; AI Engineering Capstone · 2026</p>
+          <h3 class="card__title">ApprovalFlow — Invoice &amp; Expense Approval Platform</h3>
+          <ul class="card__list">
+            <li>An <strong>AI agent recommends and a deterministic router decides</strong>: low-risk items auto-approve under a provable autonomy ceiling, while unclear, risky or high-value items escalate to a human.</li>
+            <li>Python 3.12 <strong>FastAPI</strong> services with <strong>Dapr Workflow</strong> running the payment saga and durable human-in-the-loop steps, <strong>RabbitMQ</strong> pub/sub and per-service <strong>Redis</strong> state.</li>
+            <li>Implemented duplicate short-circuiting, payment compensation on failure, and a full audit trail addressable by one correlation id.</li>
+            <li><strong>React + Vite</strong> UI — submission, live tracking, approval queue, inbox and dashboard — behind an nginx gateway with role-based JWT auth and one-command Docker Compose bring-up.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Dapr</span><span class="chip">RabbitMQ</span><span class="chip">Redis</span><span class="chip">React</span><span class="chip">Vite</span><span class="chip">Docker</span><span class="chip">nginx</span>
+          </div>
+          <a class="card__link" href="https://github.com/keronell/APPROVALFLOW-InvoiceAndExpenseApprovalPlatform" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            View repository
+          </a>
+        </div>
+      </article>
+
+      <!-- Travel planner -->
+      <article class="card" data-tracks="fullstack">
+        <div class="card__media">
+          <svg viewBox="0 0 640 360" role="img" aria-label="Illustration of a planned route across a map with waypoints and a weather reading">
+            <defs>
+              <pattern id="tp-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+                <path d="M32 0H0v32" fill="none" stroke="#18222e" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="640" height="360" fill="#0d131c"/>
+            <rect width="640" height="360" fill="url(#tp-grid)"/>
+            <path d="M-10 250c60-30 110 10 170-20s90-90 160-80 120 70 190 40" fill="none" stroke="#1b2735" stroke-width="2"/>
+            <path d="M-10 300c70-20 130 20 200-10s110-70 180-55 140 55 200 25" fill="none" stroke="#1b2735" stroke-width="2"/>
+            <path d="M90 282C150 230 170 160 246 150s112 52 176 14 92-66 132-58" fill="none" stroke="#38d6f0" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 11"/>
+            <g fill="#38d6f0">
+              <circle cx="90" cy="282" r="7"/><circle cx="246" cy="150" r="7"/><circle cx="422" cy="164" r="7"/><circle cx="554" cy="106" r="7"/>
+            </g>
+            <g font-family="monospace" font-size="12" fill="#8fa3bb">
+              <text x="104" y="305">day 1</text><text x="258" y="140">day 2</text><text x="434" y="188">day 3</text>
+            </g>
+            <rect x="430" y="246" width="168" height="62" rx="9" fill="#111825" stroke="#223247"/>
+            <text x="446" y="270" font-family="monospace" font-size="13" fill="#aebbcd">62 km · 3 days</text>
+            <text x="446" y="292" font-family="monospace" font-size="13" fill="#38d6f0">24°C · clear</text>
+          </svg>
+        </div>
+        <div class="card__body">
+          <p class="card__kicker">Web Development Final Project · 2026</p>
+          <h3 class="card__title">AI Travel Planner</h3>
+          <ul class="card__list">
+            <li><strong>Next.js 14 / React</strong> application that generates multi-day cycling and trekking itineraries with an LLM, then renders them on interactive <strong>Leaflet</strong> maps.</li>
+            <li>Routes are snapped to real roads and trails through <strong>OpenRouteService</strong>, with a three-day weather forecast for the route area.</li>
+            <li>Separate <strong>Express.js</strong> auth server: bcrypt password hashing, JWT issuance and silent refresh-token rotation, enforced by Next.js middleware on every page.</li>
+            <li>Saved itineraries and travel history persisted in <strong>MongoDB</strong> via Mongoose.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">TypeScript</span><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">Express.js</span><span class="chip">MongoDB</span><span class="chip">Leaflet</span><span class="chip">JWT</span><span class="chip">Tailwind</span>
+          </div>
+          <a class="card__link" href="https://github.com/keronell/web_final_project" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            View repository
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ALSO BUILT ============ -->
+<!-- No secondary project is tagged "ml", so the whole section is hidden on that track
+     rather than rendering an empty heading. -->
+<section class="section" id="also-built" data-tracks="ai backend fullstack embedded">
+  <div class="wrap">
+    <div class="section__head">
+      <h2 class="section__title">Also built</h2>
+      <p class="section__sub">Coursework and competition projects.</p>
+    </div>
+
+    <div class="minor">
+      <div class="minor__item" data-tracks="embedded">
+        <span class="minor__name">STM32 Stopwatch</span>
+        <span class="minor__tag">C · 2026</span>
+        <span class="minor__desc">Timer-driven timekeeping with pause/resume and lap recording, an ADC keypad and LCD interface, and interrupt-driven UART reception and button handling.</span>
+      </div>
+      <div class="minor__item" data-tracks="embedded">
+        <span class="minor__name">Parallel Computing</span>
+        <span class="minor__tag">MPI · OpenMP · CUDA · 2024</span>
+        <span class="minor__desc">Parallel computations compared across configurations, including a GPU dot product built from element-wise multiplication and reduction.</span>
+      </div>
+      <div class="minor__item" data-tracks="embedded backend">
+        <span class="minor__name"><a href="https://github.com/keronell/Final_C_Project" target="_blank" rel="noopener">Space Control System</a></span>
+        <span class="minor__tag">C · 2026</span>
+        <span class="minor__desc">Modular C application for managing celestial bodies, space agencies and expeditions.</span>
+      </div>
+      <div class="minor__item" data-tracks="ai backend fullstack">
+        <span class="minor__name">TestGuru</span>
+        <span class="minor__tag">2nd place, college hackathon · 2024</span>
+        <span class="minor__desc">Exam-preparation platform mapping syllabus topics to past-exam questions, with performance analytics to guide practice. Built and presented with the team.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="section__head">
+      <h2 class="section__title">Technical skills</h2>
+    </div>
+
+    <div class="skills" data-tracks="ml">
+      <div class="skillrow"><p class="skillrow__label">Languages</p><div class="skillrow__items"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">Bash</span><span class="chip">R</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">ML &amp; Deep Learning</p><div class="skillrow__items"><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">scikit-learn</span><span class="chip">CNNs</span><span class="chip">Transformers</span><span class="chip">Model Training &amp; Evaluation</span><span class="chip">Fine-tuning</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Computer Vision</p><div class="skillrow__items"><span class="chip">OpenCV</span><span class="chip">YOLO</span><span class="chip">Object Detection</span><span class="chip">Vision Transformers</span><span class="chip">Data Augmentation</span><span class="chip">Automated Annotation</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Data &amp; Experimentation</p><div class="skillrow__items"><span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">Weights &amp; Biases</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Engineering &amp; Deployment</p><div class="skillrow__items"><span class="chip">Git</span><span class="chip">Docker</span><span class="chip">Linux</span><span class="chip">FastAPI</span><span class="chip">REST APIs</span><span class="chip">PyTest</span></div></div>
+    </div>
+
+    <div class="skills" data-tracks="ai">
+      <div class="skillrow"><p class="skillrow__label">Languages</p><div class="skillrow__items"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">Bash</span><span class="chip">R</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">LLM Applications</p><div class="skillrow__items"><span class="chip">LLM Integration</span><span class="chip">Classification Agents</span><span class="chip">Structured Outputs</span><span class="chip">Schema Validation</span><span class="chip">Confidence-Based Routing</span><span class="chip">Human-in-the-Loop</span><span class="chip">Local LLMs</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Embeddings &amp; Retrieval</p><div class="skillrow__items"><span class="chip">Sentence Transformers</span><span class="chip">Semantic Search</span><span class="chip">ChromaDB</span><span class="chip">Embedding-Based Matching</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Backend &amp; Data</p><div class="skillrow__items"><span class="chip">FastAPI</span><span class="chip">REST APIs</span><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">ML &amp; Tooling</p><div class="skillrow__items"><span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">Linux</span><span class="chip">PyTest</span></div></div>
+    </div>
+
+    <div class="skills" data-tracks="backend">
+      <div class="skillrow"><p class="skillrow__label">Languages</p><div class="skillrow__items"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">Bash</span><span class="chip">R</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Backend</p><div class="skillrow__items"><span class="chip">FastAPI</span><span class="chip">REST APIs</span><span class="chip">Microservices</span><span class="chip">API Integration</span><span class="chip">Object-Oriented Programming</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Databases &amp; Messaging</p><div class="skillrow__items"><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">MongoDB</span><span class="chip">ChromaDB</span><span class="chip">RabbitMQ</span><span class="chip">Dapr Pub/Sub</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Testing &amp; Tools</p><div class="skillrow__items"><span class="chip">PyTest</span><span class="chip">JUnit</span><span class="chip">Git</span><span class="chip">Docker</span><span class="chip">Linux</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">CS Fundamentals</p><div class="skillrow__items"><span class="chip">Data Structures</span><span class="chip">Algorithms</span><span class="chip">Concurrency</span><span class="chip">Processes &amp; Threads</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Additional</p><div class="skillrow__items"><span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">LLM Integration</span></div></div>
+    </div>
+
+    <div class="skills" data-tracks="fullstack">
+      <div class="skillrow"><p class="skillrow__label">Languages</p><div class="skillrow__items"><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">SQL</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Bash</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Frontend</p><div class="skillrow__items"><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Tailwind CSS</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Backend</p><div class="skillrow__items"><span class="chip">FastAPI</span><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">REST APIs</span><span class="chip">JWT Authentication</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Databases &amp; ORM</p><div class="skillrow__items"><span class="chip">MongoDB</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Mongoose</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Tools &amp; Testing</p><div class="skillrow__items"><span class="chip">Git</span><span class="chip">Docker</span><span class="chip">Linux</span><span class="chip">PyTest</span><span class="chip">GitHub Actions</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Additional</p><div class="skillrow__items"><span class="chip">LLM Integration</span><span class="chip">Semantic Search</span><span class="chip">Flutter</span></div></div>
+    </div>
+
+    <div class="skills" data-tracks="embedded">
+      <div class="skillrow"><p class="skillrow__label">Languages</p><div class="skillrow__items"><span class="chip">C</span><span class="chip">Python</span><span class="chip">Bash</span><span class="chip">Java</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Embedded Systems</p><div class="skillrow__items"><span class="chip">STM32</span><span class="chip">GPIO</span><span class="chip">Timers</span><span class="chip">Interrupts</span><span class="chip">ADC</span><span class="chip">UART</span><span class="chip">LCD Interfacing</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Systems Programming</p><div class="skillrow__items"><span class="chip">Processes &amp; Threads</span><span class="chip">Shared Memory</span><span class="chip">Mutex Synchronization</span><span class="chip">Memory Management</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Tools &amp; Testing</p><div class="skillrow__items"><span class="chip">Git</span><span class="chip">Linux</span><span class="chip">PyTest</span><span class="chip">JUnit</span></div></div>
+      <div class="skillrow"><p class="skillrow__label">Engineering Background</p><div class="skillrow__items"><span class="chip">Mechanical Systems</span><span class="chip">Equipment Troubleshooting</span><span class="chip">Maintenance</span><span class="chip">Technical Documentation</span></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="section__head">
+      <h2 class="section__title">Experience</h2>
+    </div>
+
+    <div class="timeline">
+
+      <article class="entry">
+        <p class="entry__when">2025 — Present</p>
+        <div>
+          <h3 class="entry__role">Junior ML Engineer (Intern) · <span class="entry__org">StarperSoft</span></h3>
+          <ul class="entry__list" data-tracks="ml">
+            <li>Developed an LLM-based text classification workflow that extracts category, urgency and sentiment with schema-validated outputs and confidence scores.</li>
+            <li>Implemented rule-based routing, human-in-the-loop escalation for low-confidence predictions, and mock-based tests.</li>
+          </ul>
+          <ul class="entry__list" data-tracks="ai">
+            <li>Developed a local LLM classification agent that extracts category, urgency and sentiment from unstructured text and returns schema-validated predictions with confidence scores.</li>
+            <li>Implemented rule-based routing and human-in-the-loop escalation for low-confidence predictions.</li>
+            <li>Packaged the classification workflow and built a mock-based test suite to verify workflow behaviour.</li>
+          </ul>
+          <ul class="entry__list" data-tracks="backend embedded">
+            <li>Developed a Python classification workflow that transforms unstructured text into schema-validated outputs.</li>
+            <li>Implemented rule-based routing, input/output validation and escalation for low-confidence predictions.</li>
+            <li>Packaged the workflow and built a mock-based test suite to verify application behaviour.</li>
+          </ul>
+          <ul class="entry__list" data-tracks="fullstack">
+            <li>Developed a Python classification workflow that transforms unstructured text into schema-validated outputs.</li>
+            <li>Implemented rule-based routing and escalation for low-confidence predictions, with mock-based tests.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry">
+        <p class="entry__when">2021 — Present</p>
+        <div>
+          <h3 class="entry__role">Chain Inventory Department Lead · <span class="entry__org">Lindo</span></h3>
+          <ul class="entry__list">
+            <li>Lead inventory operations for overseas inbound and outbound orders, including shipment verification, inventory reconciliation and stock-discrepancy resolution using the Comax system.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry">
+        <p class="entry__when">2016 — 2020</p>
+        <div>
+          <h3 class="entry__role">Machine Sergeant · <span class="entry__org">Israeli Navy</span></h3>
+          <ul class="entry__list">
+            <li>Led mechanical engineering operations, emergency readiness and certification of new crew members aboard an anti-submarine missile ship.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section class="section" id="education">
+  <div class="wrap">
+    <div class="section__head">
+      <h2 class="section__title">Education &amp; languages</h2>
+    </div>
+
+    <div class="cols">
+      <div class="panel">
+        <h3>Education</h3>
+        <div class="panel__item">
+          <p class="panel__main">B.Sc. Software Engineering</p>
+          <p class="panel__sub">Afeka Tel Aviv Academic College of Engineering · 2023–2026</p>
+          <p class="panel__note">Specialization: Machine Learning &amp; Artificial Intelligence. Coursework: Computer Vision, Deep Learning Networks, Advanced Algorithms, Data Structures, Operating Systems, Parallel Computing, Embedded Systems, Web Development.</p>
+        </div>
+        <div class="panel__item">
+          <p class="panel__main">Practical Engineer Diploma, Mechanical Engineering</p>
+          <p class="panel__sub">Shimon Peres Hi-Tech &amp; Arts School (Shevach-Mofet)</p>
+          <p class="panel__note">Full matriculation majoring in Robotics &amp; Physics.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Languages</h3>
+        <div class="langs">
+          <p class="lang"><span>Hebrew</span><span>Native</span></p>
+          <p class="lang"><span>Russian</span><span>Native</span></p>
+          <p class="lang"><span>Ukrainian</span><span>Advanced</span></p>
+          <p class="lang"><span>English</span><span>Professional proficiency</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <h2>Let's talk</h2>
+      <p>I'm looking for a junior engineering role where I can contribute, learn from experienced teammates and take ownership of practical software problems.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="mailto:thevlamax@gmail.com">thevlamax@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/vlad-pav/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/keronell" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <div class="foot">
+    <span>© 2026 Vladislav Pavlyuk</span>
+    <span>Petah Tikva, Israel</span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
