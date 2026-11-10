@@ -375,9 +375,9 @@ ul { list-style: none; }
 
 .card__media {
   aspect-ratio: 16 / 9;
+  position: relative;
   background: var(--bg);
   border-bottom: 1px solid var(--line);
-  display: grid; place-items: center;
   overflow: hidden;
 }
 /* Light-background figures from the project repos, flipped to sit in a dark
@@ -385,8 +385,19 @@ ul { list-style: none; }
    navy-and-gold diagrams keep their palette instead of going negative. */
 .card__media--figure { background: var(--bg); }
 .card__media--figure img { filter: invert(1) hue-rotate(180deg); }
-.card__media img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 10px; }
-.card__media svg { width: 100%; height: 100%; display: block; }
+
+/* Absolutely positioned so the box is definite: a percentage height on an
+   in-flow child of an aspect-ratio box resolves to auto, which left the image
+   at its natural height and clipped it instead of letterboxing. */
+.card__media img,
+.card__media svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.card__media img { object-fit: contain; padding: 10px; }
 
 .card__body { display: flex; flex-direction: column; flex: 1; gap: 14px; padding: 20px 20px 22px; }
 

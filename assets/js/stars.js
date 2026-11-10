@@ -22,9 +22,9 @@
 
   // size in CSS px, drift in px per second, alpha range, share of the field
   var LAYERS = [
-    { size: 1, speed: 0.50, min: 0.22, max: 0.46, share: 0.64 },
-    { size: 2, speed: 1.05, min: 0.38, max: 0.68, share: 0.28 },
-    { size: 3, speed: 1.90, min: 0.58, max: 0.88, share: 0.08 }
+    { size: 1, speed: 0.95, min: 0.22, max: 0.46, share: 0.64 },
+    { size: 2, speed: 1.95, min: 0.38, max: 0.68, share: 0.28 },
+    { size: 3, speed: 3.50, min: 0.58, max: 0.88, share: 0.08 }
   ];
 
   // Drift direction: slightly right of straight up.

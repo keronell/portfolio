@@ -186,30 +186,7 @@
       <!-- Object detection -->
       <article class="card" data-tracks="ml ai" data-reveal>
         <div class="card__media">
-          <svg viewBox="0 0 640 360" role="img" aria-label="Diagram of object detection bounding boxes with class labels and confidence scores">
-            <defs>
-              <pattern id="od-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M40 0H0v40" fill="none" stroke="#1B2634" stroke-width="1"/>
-              </pattern>
-            </defs>
-            <rect width="640" height="360" fill="#080D14"/>
-            <rect width="640" height="360" fill="url(#od-grid)"/>
-
-            <rect x="82" y="74" width="146" height="214" fill="#C9A227" fill-opacity=".05" stroke="#C9A227" stroke-width="1.5" stroke-dasharray="6 4"/>
-            <rect x="81" y="54" width="104" height="20" fill="#C9A227"/>
-            <text x="89" y="69" font-family="monospace" font-size="12" fill="#0B0A04">person 0.94</text>
-
-            <rect x="300" y="170" width="190" height="118" fill="#C9A227" fill-opacity=".05" stroke="#C9A227" stroke-width="1.5" stroke-dasharray="6 4"/>
-            <rect x="299" y="150" width="76" height="20" fill="#C9A227"/>
-            <text x="307" y="165" font-family="monospace" font-size="12" fill="#0B0A04">dog 0.88</text>
-
-            <rect x="508" y="208" width="84" height="80" fill="#8A6F1C" fill-opacity=".05" stroke="#8A6F1C" stroke-width="1.5" stroke-dasharray="4 4"/>
-            <rect x="507" y="188" width="70" height="20" fill="#8A6F1C"/>
-            <text x="515" y="203" font-family="monospace" font-size="12" fill="#0B0A04">cat 0.61</text>
-
-            <path d="M40 320h560" stroke="#293646" stroke-width="1"/>
-            <text x="40" y="340" font-family="monospace" font-size="12" fill="#64748B">mAP@0.5 · mAP@0.5:0.95 · per class</text>
-          </svg>
+          <img src="assets/img/detection-grid.webp" width="794" height="529" decoding="async" alt="Grid of sixteen validation images with YOLOv8 bounding boxes labelled person and pet, each with a confidence score.">
         </div>
         <div class="card__body">
           <p class="card__cat label">
@@ -242,7 +219,7 @@
       <!-- Plant disease -->
       <article class="card" data-tracks="ml" data-reveal>
         <div class="card__media card__media--figure">
-          <img src="assets/img/plant-confusion.webp" width="1280" height="518" decoding="async" alt="Two confusion matrices side by side comparing a baseline augmentation model against a field-style augmentation model on the field dataset.">
+          <img src="assets/img/plant-pipeline.webp" width="1280" height="817" decoding="async" alt="Research pipeline: three plant image datasets feed data processing, transfer learning on EfficientNet-B0 with fine-tuning, per-dataset F1 evaluation and confusion matrices, then the baseline, quick-wins and progressive experiments.">
         </div>
         <div class="card__body">
           <p class="card__cat label">
@@ -260,7 +237,7 @@
               <dd>Measured with <em>macro-F1</em> across all three datasets - <em>61,486</em> lab images over <em>39</em> classes against <em>5,170</em> field images - including a pseudo-label confidence ablation at <em>T = 0.85 / 0.90 / 0.95</em>. Written up as an accompanying article.</dd></div>
           </dl>
 
-          <p class="card__note">Fig. baseline vs field-style augmentation, field dataset</p>
+          <p class="card__note">Fig. research pipeline · <a href="assets/img/plant-teacher-student.webp" target="_blank" rel="noopener">teacher-student flow</a></p>
 
           <ul class="chips">
             <li class="chip">PyTorch</li><li class="chip">torchvision</li><li class="chip">timm</li><li class="chip">scikit-learn</li><li class="chip">EfficientNet</li><li class="chip">ViT</li>
